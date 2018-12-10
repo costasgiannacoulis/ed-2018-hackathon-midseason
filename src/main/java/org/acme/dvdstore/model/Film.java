@@ -1,8 +1,11 @@
-package gr.codehub.guide.filmrepository.model;
+package org.acme.dvdstore.model;
 
 import java.util.Set;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 @Builder

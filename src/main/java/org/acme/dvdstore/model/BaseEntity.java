@@ -1,4 +1,4 @@
-package org.acme.eshop.model;
+package org.acme.dvdstore.model;
 
 import java.io.Serializable;
 
