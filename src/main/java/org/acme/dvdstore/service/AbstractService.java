@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class AbstractService<T extends BaseEntity> implements BaseService<T, Long> {
-	private static final Logger log = LoggerFactory.getLogger(AbstractService.class);
+	protected Logger log = LoggerFactory.getLogger(getClass());
 
 	public abstract BaseRepository<T, Long> getRepository();
 

@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class AbstractRepository<T extends BaseEntity> implements BaseRepository<T, Long> {
-	private static final Logger log = LoggerFactory.getLogger(AbstractRepository.class);
+	protected Logger log = LoggerFactory.getLogger(getClass());
 
 	private final Map<Long, T> STORAGE = new LinkedHashMap();
 
