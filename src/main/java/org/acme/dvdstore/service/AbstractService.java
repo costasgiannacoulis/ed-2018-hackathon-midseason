@@ -4,14 +4,11 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.acme.dvdstore.base.AbstractLogEntity;
 import org.acme.dvdstore.model.BaseEntity;
 import org.acme.dvdstore.repository.BaseRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public abstract class AbstractService<T extends BaseEntity> implements BaseService<T, Long> {
-	protected Logger log = LoggerFactory.getLogger(getClass());
-
+public abstract class AbstractService<T extends BaseEntity> extends AbstractLogEntity implements BaseService<T, Long> {
 	public abstract BaseRepository<T, Long> getRepository();
 
 	@PostConstruct

@@ -9,13 +9,11 @@ import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
+import org.acme.dvdstore.base.AbstractLogEntity;
 import org.acme.dvdstore.model.BaseEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public abstract class AbstractRepository<T extends BaseEntity> implements BaseRepository<T, Long> {
-	protected Logger log = LoggerFactory.getLogger(getClass());
-
+public abstract class AbstractRepository<T extends BaseEntity> extends AbstractLogEntity
+	implements BaseRepository<T, Long> {
 	private final Map<Long, T> STORAGE = new LinkedHashMap();
 
 	public abstract AtomicLong getSequence();
