@@ -2,7 +2,8 @@ package org.acme.dvdstore.base;
 
 public enum StructurePattern {
 	ENTITIES("entities"),
-	REPORT("report"),
+	RESPONSES("responses"),
+	REPORTS("reports"),
 	ARCHIVE("archive"),
 	BACKUP("backup");
 
