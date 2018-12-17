@@ -17,7 +17,7 @@ public enum StructurePattern {
 		return name;
 	}
 
-	public static StructurePattern get(final int token) {
+	public static StructurePattern get(final String token) {
 		for (final StructurePattern entity : StructurePattern.values()) {
 			if (entity.getName().equals(token)) {
 				return entity;

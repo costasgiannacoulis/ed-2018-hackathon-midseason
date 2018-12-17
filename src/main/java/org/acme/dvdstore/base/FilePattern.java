@@ -31,7 +31,7 @@ public enum FilePattern {
 		return dumpName;
 	}
 
-	public static FilePattern get(final int token) {
+	public static FilePattern get(final String token) {
 		for (final FilePattern entity : FilePattern.values()) {
 			if (entity.getSuffix().equals(token)) {
 				return entity;

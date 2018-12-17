@@ -16,7 +16,7 @@ public enum CommandPattern {
 		return prefix;
 	}
 
-	public static CommandPattern get(final int token) {
+	public static CommandPattern get(final String token) {
 		for (final CommandPattern entity : CommandPattern.values()) {
 			if (entity.getPrefix().equals(token)) {
 				return entity;
