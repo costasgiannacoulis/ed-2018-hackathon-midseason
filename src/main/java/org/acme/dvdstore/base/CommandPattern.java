@@ -1,6 +1,6 @@
 package org.acme.dvdstore.base;
 
-public enum ActionPattern {
+public enum CommandPattern {
 	CREATE("create"),
 	READ("read"),
 	UPDATE("update"),
@@ -8,7 +8,7 @@ public enum ActionPattern {
 
 	private final String prefix;
 
-	ActionPattern(final String token) {
+	CommandPattern(final String token) {
 		prefix = token;
 	}
 
@@ -16,8 +16,8 @@ public enum ActionPattern {
 		return prefix;
 	}
 
-	public static ActionPattern get(final int token) {
-		for (final ActionPattern entity : ActionPattern.values()) {
+	public static CommandPattern get(final int token) {
+		for (final CommandPattern entity : CommandPattern.values()) {
 			if (entity.getPrefix().equals(token)) {
 				return entity;
 			}
