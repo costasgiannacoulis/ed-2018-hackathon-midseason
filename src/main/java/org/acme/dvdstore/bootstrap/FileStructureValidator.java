@@ -152,50 +152,50 @@ public class FileStructureValidator implements CommandLineRunner {
 		switch (filePattern) {
 			case ACTOR:
 				if (LOAD == action) {
-					loadActors(ACTOR);
+					loadActors();
 				} else {
-					saveActors(ACTOR);
+					saveActors();
 				}
 				break;
 			case CATEGORY:
 				if (LOAD == action) {
-					loadCategories(CATEGORY);
+					loadCategories();
 				} else {
-					saveCategories(CATEGORY);
+					saveCategories();
 				}
 				break;
 			case CUSTOMER:
 				if (LOAD == action) {
-					loadCustomers(CUSTOMER);
+					loadCustomers();
 				} else {
-					saveCustomers(CUSTOMER);
+					saveCustomers();
 				}
 				break;
 			case FILM:
 				if (LOAD == action) {
-					loadFilms(FILM);
+					loadFilms();
 				} else {
-					saveFilms(FILM);
+					saveFilms();
 				}
 				break;
 			case LANGUAGE:
 				if (LOAD == action) {
-					loadLanguages(LANGUAGE);
+					loadLanguages();
 				} else {
-					saveLanguages(LANGUAGE);
+					saveLanguages();
 				}
 				break;
 			case RENTAL:
 				if (LOAD == action) {
-					loadRentals(RENTAL);
+					loadRentals();
 				} else {
-					saveRentals(RENTAL);
+					saveRentals();
 				}
 		}
 	}
 
-	private void loadActors(final FilePattern filePattern) {
-		final Path path = getFullPath(filePattern);
+	private void loadActors() {
+		final Path path = getFullPath(ACTOR);
 		try (final Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 			final Actor[] actors = gson.fromJson(reader, Actor[].class);
 			if (!CollectionUtils.isEmpty(Arrays.asList(actors))) {
@@ -212,8 +212,8 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void loadCategories(final FilePattern filePattern) {
-		final Path path = getFullPath(filePattern);
+	private void loadCategories() {
+		final Path path = getFullPath(CATEGORY);
 		try (final Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 			final Category[] categories = gson.fromJson(reader, Category[].class);
 			if (!CollectionUtils.isEmpty(Arrays.asList(categories))) {
@@ -230,8 +230,8 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void loadCustomers(final FilePattern filePattern) {
-		final Path path = getFullPath(filePattern);
+	private void loadCustomers() {
+		final Path path = getFullPath(CUSTOMER);
 		try (final Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 			final Customer[] customers = gson.fromJson(reader, Customer[].class);
 			if (customers != null && !CollectionUtils.isEmpty(Arrays.asList(customers))) {
@@ -248,8 +248,8 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void loadFilms(final FilePattern filePattern) {
-		final Path path = getFullPath(filePattern);
+	private void loadFilms() {
+		final Path path = getFullPath(FILM);
 		try (final Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 			final Film[] films = gson.fromJson(reader, Film[].class);
 			if (!CollectionUtils.isEmpty(Arrays.asList(films))) {
@@ -266,8 +266,8 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void loadLanguages(final FilePattern filePattern) {
-		final Path path = getFullPath(filePattern);
+	private void loadLanguages() {
+		final Path path = getFullPath(LANGUAGE);
 		try (final Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 			final Language[] languages = gson.fromJson(reader, Language[].class);
 			if (!CollectionUtils.isEmpty(Arrays.asList(languages))) {
@@ -284,8 +284,8 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void loadRentals(final FilePattern filePattern) {
-		final Path path = getFullPath(filePattern);
+	private void loadRentals() {
+		final Path path = getFullPath(RENTAL);
 		try (final Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 			final Rental[] rentals = gson.fromJson(reader, Rental[].class);
 			if (rentals != null && !CollectionUtils.isEmpty(Arrays.asList(rentals))) {
@@ -312,7 +312,7 @@ public class FileStructureValidator implements CommandLineRunner {
 		log.debug("Completed backup procedure.");
 	}
 
-	private void saveActors(final FilePattern filePattern) {
+	private void saveActors() {
 		final List<Actor> actors = actorService.findAll();
 		try (final FileOutputStream fos = new FileOutputStream(getFullPath(ACTOR).toFile());
 			 final OutputStreamWriter osr = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
@@ -324,7 +324,7 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void saveCategories(final FilePattern filePattern) {
+	private void saveCategories() {
 		final List<Category> categories = categoryService.findAll();
 		try (final FileOutputStream fos = new FileOutputStream(getFullPath(CATEGORY).toFile());
 			 final OutputStreamWriter osr = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
@@ -336,7 +336,7 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void saveCustomers(final FilePattern filePattern) {
+	private void saveCustomers() {
 		final List<Customer> customers = customerService.findAll();
 		try (final FileOutputStream fos = new FileOutputStream(getFullPath(CUSTOMER).toFile());
 			 final OutputStreamWriter osr = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
@@ -348,7 +348,7 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void saveFilms(final FilePattern filePattern) {
+	private void saveFilms() {
 		final List<Film> films = filmService.findAll();
 		try (final FileOutputStream fos = new FileOutputStream(getFullPath(FILM).toFile());
 			 final OutputStreamWriter osr = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
@@ -360,7 +360,7 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void saveLanguages(final FilePattern filePattern) {
+	private void saveLanguages() {
 		final List<Language> languages = languageService.findAll();
 		try (final FileOutputStream fos = new FileOutputStream(getFullPath(LANGUAGE).toFile());
 			 final OutputStreamWriter osr = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
@@ -372,7 +372,7 @@ public class FileStructureValidator implements CommandLineRunner {
 		}
 	}
 
-	private void saveRentals(final FilePattern filePattern) {
+	private void saveRentals() {
 		final List<Rental> rentals = rentalService.findAll();
 		try (final FileOutputStream fos = new FileOutputStream(getFullPath(RENTAL).toFile());
 			 final OutputStreamWriter osr = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
