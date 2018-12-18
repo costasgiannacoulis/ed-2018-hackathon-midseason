@@ -1,5 +1,6 @@
 package org.acme.dvdstore.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -22,10 +23,12 @@ public abstract class AbstractService<T extends BaseEntity> extends AbstractLogE
 	}
 
 	@Override
-	public void createAll(final T... entities) {
+	public List<T> createAll(final T... entities) {
+		final List<T> updatedEntities = new ArrayList<>();
 		for (final T entity : entities) {
-			create(entity);
+			updatedEntities.add(create(entity));
 		}
+		return updatedEntities;
 	}
 
 	@Override

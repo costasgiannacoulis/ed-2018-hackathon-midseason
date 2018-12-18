@@ -5,7 +5,7 @@ import java.util.List;
 public interface BaseService<T, N> {
 	T create(final T entity);
 
-	void createAll(final T... entities);
+	List<T> createAll(final T... entities);
 
 	void update(T entity);
 
