@@ -120,7 +120,7 @@ public class FileStructureValidator implements CommandLineRunner {
 	}
 
 	private void loadBackedUpData() throws IOException {
-		final Path backupPath = Paths.get(root).resolve(StructurePattern.BACKUP.getName());
+		final Path backupPath = getRoot().resolve(StructurePattern.BACKUP.getName());
 		final Stream<Path> backupFilesPath = Files.find(backupPath, 1,
 														(path, basicFileAttributes) -> String.valueOf(path)
 																							 .endsWith(fileFormat));

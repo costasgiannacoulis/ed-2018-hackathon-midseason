@@ -6,7 +6,6 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
@@ -38,7 +37,7 @@ public class CustomerController extends BaseController {
 
 	@Scheduled(cron = "0/15 * * * * *")
 	private void poll() {
-		final Path customerPath = Paths.get(root).resolve(StructurePattern.ENTITIES.getName()).resolve(
+		final Path customerPath = getRoot().resolve(StructurePattern.ENTITIES.getName()).resolve(
 			CUSTOMER.getSuffix());
 		log.trace("Looking for {} related commands in {}.", CUSTOMER.getSuffix(), customerPath);
 

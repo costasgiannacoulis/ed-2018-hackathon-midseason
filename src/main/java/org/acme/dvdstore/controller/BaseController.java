@@ -41,7 +41,7 @@ public class BaseController {
 
 	@PostConstruct
 	protected void init() {
-		archivePath = Objects.requireNonNull(Paths.get(root).resolve(StructurePattern.ARCHIVE.getName()));
+		archivePath = Objects.requireNonNull(getRoot().resolve(StructurePattern.ARCHIVE.getName()));
 	}
 
 	protected Path getRoot() {
