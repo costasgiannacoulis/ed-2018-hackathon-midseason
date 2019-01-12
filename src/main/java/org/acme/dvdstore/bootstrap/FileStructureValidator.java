@@ -82,14 +82,14 @@ public class FileStructureValidator implements CommandLineRunner {
 		loadBackedUpData();
 	}
 
-	public void validateStructure() {
+	private void validateStructure() {
 		//Create root
 		createStructure(getRoot());
 
 		// Create 1st level directories
 		EnumSet.allOf(StructurePattern.class).forEach(t -> createStructure(getRoot().resolve(t.getName())));
 
-		// Creat 2nd level directories under entities
+		// Create 2nd level directories under entities
 		final Path parentPath = getRoot().resolve(StructurePattern.ENTITIES.getName());
 		EnumSet.allOf(FilePattern.class).forEach(t -> createStructure(parentPath.resolve(t.getSuffix())));
 	}
