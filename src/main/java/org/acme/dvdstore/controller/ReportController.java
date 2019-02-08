@@ -22,7 +22,6 @@ import org.acme.dvdstore.model.Rental;
 import org.acme.dvdstore.service.RentalService;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -128,8 +127,6 @@ public class ReportController extends BaseController {
 
 	protected void generateReport(final String reportFile, final Map<Film, Integer> report) {
 		final Workbook workbook = new XSSFWorkbook();
-
-		final CreationHelper createHelper = workbook.getCreationHelper();
 
 		// Create a Sheet
 		final Sheet sheet = workbook.createSheet("DVD Rentals");
