@@ -46,6 +46,7 @@ import com.google.gson.JsonSyntaxException;
 import lombok.extern.slf4j.Slf4j;
 
 import static java.nio.file.Files.createDirectory;
+import static org.acme.dvdstore.base.DataAction.BACKUP;
 import static org.acme.dvdstore.base.DataAction.LOAD;
 import static org.acme.dvdstore.base.FilePattern.ACTOR;
 import static org.acme.dvdstore.base.FilePattern.CATEGORY;
@@ -145,7 +146,7 @@ public class FileStructureValidator implements CommandLineRunner {
 	}
 
 	private void saveData(final FilePattern filePattern) {
-		processData(filePattern, DataAction.BACKUP);
+		processData(filePattern, BACKUP);
 	}
 
 	private void processData(final FilePattern filePattern, final DataAction action) {
